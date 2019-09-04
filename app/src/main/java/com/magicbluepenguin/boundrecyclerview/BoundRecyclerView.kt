@@ -7,14 +7,13 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.magicbluepenguin.boundrecyclerview.DifferentiableObject
-import com.magicbluepenguin.boundrecyclerview.DummyDifferentiableObject
 
 /**
  * Generic RecyclerView that uses generics to enable reuse with data bindings
  */
 class BoundRecyclerView<T : DifferentiableObject>(context: Context, attrs: AttributeSet) :
     RecyclerView(context, attrs) {
-    val dummy = DummyDifferentiableObject().hasSameId(DummyDifferentiableObject())
+
     var boundAdapter: BoundPagedRecyclerViewAdapter<T, *>?
         set(value) {
             value?.let {

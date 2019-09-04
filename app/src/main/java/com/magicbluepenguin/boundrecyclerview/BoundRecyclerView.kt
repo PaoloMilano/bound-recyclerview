@@ -6,7 +6,6 @@ import androidx.databinding.ViewDataBinding
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.magicbluepenguin.boundrecyclerview.DifferentiableObject
 
 /**
  * Generic RecyclerView that uses generics to enable reuse with data bindings
@@ -70,6 +69,11 @@ abstract class BoundPagedRecyclerViewAdapter<T : DifferentiableObject, I : Binda
             holder.bind(it)
         }
     }
+}
+
+interface DifferentiableObject {
+    fun hasSameId(other: DifferentiableObject): Boolean
+    fun hasSameContents(other: DifferentiableObject): Boolean
 }
 
 abstract class BindableViewHolder<T, I : ViewDataBinding>(private val viewBinding: I) :

@@ -121,6 +121,10 @@ class BoundRecyclerView<T : BoundPagedRecyclerViewAdapter.DifferentiableObject>(
 ) :
     RecyclerView(context, attrs) {
 
+    init {
+        layoutManager = LinearLayoutManager(context)
+    }
+
     var boundAdapter: BoundPagedRecyclerViewAdapter<T, *>?
         set(value) {
             value?.let {

@@ -103,9 +103,11 @@ fun onFirstItemShown(view: BoundRecyclerView<*>, onTopReached: (Boolean) -> Unit
                     return
                 }
 
-                if (!recyclerView.canScrollVertically(-1)) {
-                    onTopReached.invoke(true)
-                    isScrolling = false
+                view.boundAdapter?.run {
+                    if ((recyclerView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition() == 0) {
+                        onTopReached.invoke(true)
+                        isScrolling = false
+                    }
                 }
             }
         })
